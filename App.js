@@ -129,7 +129,7 @@ const AppDrawerNavigator = createDrawerNavigator(
       },
   },
   // Scanner: ScannerScreen,
-  Test: Test,
+  // Test: Test,
   // Untitled: Untitled
 }, 
 {

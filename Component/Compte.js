@@ -2,9 +2,18 @@ import React from 'react';
 import { Text, View, StyleSheet, TextInput, TouchableOpacity, SafeAreaView } from 'react-native';
 import { createAppContainer } from 'react-navigation';
 import { Header, Left, Right, Icon } from 'native-base';
+import { Toggle } from './Toggle'
 
 class Compte extends React.Component {
-  state = { checked: false }
+  state = { 
+    alertsIsOn: true,
+    newsletterIsOn: false,
+    trackingIsOn: true,
+  }
+
+  alertsToggleHandle(state) {
+    this.setState({ alertsIsOn: state })
+  }
 
   handleCheckboxChange = event =>
     this.setState({ checked: event.target.checked })
@@ -32,18 +41,15 @@ class Compte extends React.Component {
                       <View style={styles.text_checkbox}>
                         <Text>Activer l'alerte SMS</Text>
                       </View>
-                      
-                      {/* <CheckBox 
-                        style={styles.checkbox}
-                        checked={this.state.checked}
-                        onChange={this.handleCheckboxChange}
-                        /> */}
+                      <Toggle
+                        isOn={this.state.alertsIsOn}
+                        onToggle={state => this.alertsToggleHandle(state)}
+                      />
                     </View>
                       
-                    
                     <View style={styles.container_button}>
                       <View style={styles.button}>
-                        <TouchableOpacity onPress={() => {}}>
+                        <TouchableOpacity style={{backgroundColor:'red'}} onPress={() => {}}>
                           <Text style={styles.touchableOpacity}>Mettre à jour du profil</Text>
                         </TouchableOpacity>
                       </View>
